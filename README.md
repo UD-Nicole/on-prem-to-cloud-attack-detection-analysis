@@ -28,18 +28,16 @@ Telemetry Sources:
 - PingOne Audit Logs
 - AWS CloudTrail
 
-Detection Rules:
-
-13
-
-Dashboards:
-
-4
-
-MITRE Techniques:
-
-8+
-
-Log Sources:
-
-6
+Baseline
+        ↓
+Attack Simulation
+        ↓
+Log Collection
+        ↓
+Detection
+        ↓
+Alert Generation
+        ↓
+Investigation
+        ↓
+Dashboard Validation
