@@ -33,7 +33,7 @@ Because the credentials were stored locally in a plaintext file, the credential 
 
 ### Nmshost Pivot Success
 
-![Nmshost Pivot Success](07-nmshost-pivot-success.png)
+![Nmshost Pivot Success](07-nmshost-pivot-success..png)
 
 ### Credential Discovery
 
