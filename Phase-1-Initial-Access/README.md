@@ -31,7 +31,7 @@ Screenshots in this folder show:
 ![Hydra Terminal Success](01-hydra-terminal-success.png)
 
 - **Hydra Successful Credentials:**
-![Hydra Successful Credentials](02-hydra-successful-credentials....)
+![Hydra Successful Credentials](02-hydra-successful-credentials.png)
 
 - **DR-003 Alert Trigger History:**
 ![DR-003 Alert Trigger History](03-dr003-alert-trigger-history.png)
