@@ -29,8 +29,5 @@ Establishing this baseline ensured that all telemetry sources were functioning c
 #### AWS Baseline
 ![AWS Baseline](AWS-%20baseline.png)
 
-#### Splunk Log Ingestion Validation
-![Splunk Log Ingestion Validation](Splunk-log-ingestion-validation)
-
 #### Pre-Attack Dashboard State
 ![Baseline Dashboard](baseline-dashboard-pre-attack.png)
