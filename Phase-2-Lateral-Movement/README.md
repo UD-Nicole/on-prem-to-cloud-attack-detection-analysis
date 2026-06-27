@@ -33,7 +33,7 @@ Because the credentials were stored locally in a plaintext file, the credential 
 
 ### Nmshost Pivot Success
 
-![Nmshost Pivot Success](07-nmshost-Pivot-success.png)
+![Nmshost Pivot Success](07-nmshost-pivot-success.png)
 
 ### Credential Discovery
 
@@ -41,15 +41,15 @@ Because the credentials were stored locally in a plaintext file, the credential 
 
 ### Credential Harvesting
 
-![Credential Harvesting](09-credential-harvest.png)
+![Credential Harvesting](09-credential-harvesting.png)
 
 ### Dr006 Investigation
 
-![Dr006 Investigation](11-dr006-Investigation.png)
+![Dr006 Investigation](11-dr006-investigation.png)
 
 ### Dashboard Update
 
-![Dashboard Update](12-dashboard-Update.png)
+![Dashboard Update](12-dashboard-update.png)
 
 ## Outcome
 
