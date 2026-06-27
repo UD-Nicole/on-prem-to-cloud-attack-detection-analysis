@@ -9,7 +9,6 @@ The screenshots in this folder demonstrate:
 - Normal activity from AWS
 - Successful log ingestion from all configured sources
 - Initial dashboard state before attack execution
-- 
 Establishing this baseline ensured that all telemetry sources were functioning correctly before attack simulation and detection testing.
 ---
 
