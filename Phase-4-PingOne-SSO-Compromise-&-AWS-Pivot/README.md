@@ -46,18 +46,6 @@ This demonstrated the importance of correlating identity provider logs with clou
 
 ## Evidence
 
-### PingOne Authentication Logs
-
-![PingOne Authentication](18-PingOne-Auth.png)
-
----
-
-### SAML AWS Access Attempt
-
-![SAML Attempt](19-SAML-AWS-Attempt.png)
-
----
-
 - **PingOne Successful Authentication:**
 ![PingOne Successful Authentication](18-pingone-successful-authentication.png)
 
