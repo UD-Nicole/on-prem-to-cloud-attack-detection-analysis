@@ -4,12 +4,11 @@
 
 After gaining initial access to the WebHost, the objective of this phase was to pivot into the internal network by establishing an SSH session to the NMSHost. Once access was obtained, the system was examined for sensitive information that could be used to compromise additional on-premises and cloud resources.
 
-## Detection
-
-Detect successful SSH connections from the compromised WebHost to the internal NMSHost.
+## Detection Rules
 
 ### DR-005 – SSH Lateral Movement (WEBHOST → NMSHOST)
 
+**Objective:** Detect successful SSH connections from the compromised WebHost to the internal NMSHost.
 ```spl
 host=nms* sourcetype=linux_secure sshd "Accepted"
 | rex field=_raw "for (?<user>\w+) from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
@@ -19,6 +18,18 @@ host=nms* sourcetype=linux_secure sshd "Accepted"
 ```
 
 **Result:** Validated. The rule identified a successful SSH connection from **WEBHOST (192.168.16.5)** to **NMSHOST**, confirming lateral movement within the internal network.
+
+### DR-006 – Stored Credential Discovery on NMSHOST
+
+**Objective:** Detect access to files containing stored Active Directory, PingOne, or AWS credentials.
+
+```spl
+host=nmshost
+("burke_adatum" OR "pingone" OR "aws")
+| table _time host user _raw
+```
+
+**Result:** Validated. The search identified plaintext credentials for Active Directory, PingOne, and AWS stored on **NMSHOST**, confirming credential discovery during the attack simulation.
 
 ## Attack Summary
 
