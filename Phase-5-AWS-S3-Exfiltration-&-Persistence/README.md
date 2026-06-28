@@ -16,6 +16,45 @@ This phase completed the attack chain from on-prem infrastructure to cloud data 
 
 ---
 
+## Detection rules
+
+### DR-011 – Suspicious S3 Data Access and Exfiltration Activity
+
+**Objective:** Detect excessive S3 object access that may indicate data enumeration or exfiltration.
+
+```spl
+sourcetype=aws:cloudtrail eventSource=s3.amazonaws.com
+(eventName=GetObject OR eventName=ListBucket)
+| stats count values(requestParameters.bucketName) as buckets
+        by userIdentity.arn sourceIPAddress
+| bin _time span=5m
+| stats count values(requestParameters.bucketName) as buckets by userIdentity.arn sourceIPAddress _time
+| where count > 20
+```
+
+**Result:** Validated. High-volume S3 access activity was detected, indicating potential data enumeration or exfiltration behavior.
+
+### DR-012 – AWS IAM Persistence Through User and Policy
+
+**Objective:** Detect IAM-related changes that may indicate persistence or privilege escalation in AWS.
+
+```spl
+sourcetype=aws:cloudtrail
+eventSource=iam.amazonaws.com
+(eventName=CreateUser OR
+ eventName=CreateAccessKey OR
+ eventName=AttachUserPolicy OR
+ eventName=PutUserPolicy OR
+ eventName=CreateLoginProfile OR
+ eventName=AttachRolePolicy)
+| stats count
+        values(eventName) as actions
+        values(requestParameters.userName) as target_user
+        by userIdentity.arn sourceIPAddress
+```
+
+**Result:** Validated. IAM modification activity was detected, including user creation and policy attachment indicative of persistence attempts.
+
 ## Investigation
 
 AWS CloudTrail logs and Splunk ingestion were used to analyze cloud activity.
