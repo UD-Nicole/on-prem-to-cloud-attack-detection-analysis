@@ -10,6 +10,34 @@ Administrative credentials harvested during the previous phase were used to auth
 
 This activity generated Windows Security Events that were forwarded to Splunk, allowing the attack to be investigated and correlated throughout the attack timeline.
 
+## Detection Rules
+
+### DR-007 – Active Directory Authentication Using Stolen Credentials
+
+**Objective:** Detect successful Active Directory logons using compromised credentials from NMSHost.
+
+```spl
+host=DC1-CloudLab sourcetype=WinEventLog:Security EventCode=4624 Logon_Type=3
+| eval match_user=coalesce(Account_Name, TargetUserName, SubjectUserName)
+| search match_user="*Burke*"
+| eval src_host=coalesce(IpAddress, Source_Network_Address)
+| stats count by match_user src_host host Logon_Type
+```
+
+**Result:** Validated. Successful domain authentication was observed using the compromised "Burke" account.
+
+### DR-008 – Active Directory Privilege Escalation Activity
+
+**Objective:** Detect account creation and privilege escalation activity in Active Directory.
+
+```spl
+host=DC1-CloudLab sourcetype=WinEventLog:Security
+(EventCode=4720 OR EventCode=4728 OR EventCode=4732)
+| table _time EventCode Account_Name TargetUserName Group_Name
+```
+
+**Result:** Validated. Detected user creation and privilege escalation activity involving Domain Admin group modification.
+
 ## Investigation
 
 Windows Security Event Logs were investigated in Splunk to validate the attacker activity performed on the Domain Controller.
