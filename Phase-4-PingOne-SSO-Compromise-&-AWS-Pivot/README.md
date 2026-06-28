@@ -50,7 +50,7 @@ This demonstrated the importance of correlating identity provider logs with clou
 ![PingOne Successful Authentication](18-pingone-successful-authentication.png)
 
 - **Pivot to AWS Successful:**
-![Pivot to AWS Successful](19-pivot-to-aws-successful.png)
+![Pivot to AWS Successful](19-pivot-to%20aws-successful.png)
 
 - **PingOne Investigation:**
 ![PingOne Investigation](20-pingone-investigation.png)
