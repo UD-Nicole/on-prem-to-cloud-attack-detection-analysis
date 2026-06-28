@@ -48,7 +48,7 @@ These events provided a clear audit trail of account creation and privilege esca
 
 ## Evidence
 
-### Create Domain User
+- **AD User Creation:**
 
 ![Create Domain User](14-Create-Domain-User.png)
 
