@@ -4,6 +4,22 @@
 
 After gaining initial access to the WebHost, the objective of this phase was to pivot into the internal network by establishing an SSH session to the NMSHost. Once access was obtained, the system was examined for sensitive information that could be used to compromise additional on-premises and cloud resources.
 
+## Detection
+
+Detect successful SSH connections from the compromised WebHost to the internal NMSHost.
+
+### DR-005 – SSH Lateral Movement (WEBHOST → NMSHOST)
+
+```spl
+host=nms* sourcetype=linux_secure sshd "Accepted"
+| rex field=_raw "for (?<user>\w+) from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| where src_ip IN ("192.168.16.5")
+| table _time host user src_ip
+| sort _time
+```
+
+**Result:** Validated. The rule identified a successful SSH connection from **WEBHOST (192.168.16.5)** to **NMSHOST**, confirming lateral movement within the internal network.
+
 ## Attack Summary
 
 Using valid credentials obtained during the initial access phase, an internal SSH connection was established from the compromised WebHost to the NMSHost. During post-compromise enumeration, administrative credentials for Active Directory, PingOne, and AWS were discovered in a plaintext file. These credentials were harvested and later used during the identity and cloud compromise phases of the attack.
