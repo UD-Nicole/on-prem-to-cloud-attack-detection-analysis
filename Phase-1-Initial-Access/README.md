@@ -23,7 +23,7 @@ host=webhost sourcetype=linux_secure
 | where count >= 5
 ```
 
-**Result:** ✅ Alert triggered after five failed SSH login attempts.
+**Result:** Alert triggered after five failed SSH login attempts.
 
 ---
 
@@ -42,7 +42,7 @@ host=webhost sourcetype=linux_secure
 | where failures>=5 AND successes>=1
 ```
 
-**Result:** ✅ Alert triggered when a successful login followed multiple failed attempts.
+**Result:** Alert triggered when a successful login followed multiple failed attempts.
 
 ## Investigation
 The activity was investigated using Splunk search queries across Linux authentication logs. The logs confirmed:
