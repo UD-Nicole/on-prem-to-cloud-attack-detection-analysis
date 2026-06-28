@@ -18,6 +18,35 @@ PingOne logs still reflected successful authentication activity toward AWS via S
 
 ---
 
+## Detection Rules
+
+### DR-009 – Suspicious PingOne Authentication Using Stolen Credentials
+
+**Objective:** Detect suspicious authentication patterns in PingOne indicating possible credential compromise.
+
+```spl
+index=pingone
+| stats 
+    count(eval(result="FAILURE")) as failures
+    count(eval(result="SUCCESS")) as successes
+    by user src_ip
+| where failures >= 5 AND successes >= 1
+```
+
+**Result:** Validated. Both failed and successful authentication attempts were observed for the same user, indicating possible credential misuse.
+
+### DR-010 – AWS Console Login Using Compromised Credentials
+
+**Objective:** Detect successful AWS console logins using compromised credentials.
+
+```spl
+sourcetype=aws:cloudtrail eventName=ConsoleLogin responseElements.ConsoleLogin="Success"
+| table _time userIdentity.arn sourceIPAddress awsRegion
+| sort -_time
+```
+
+**Result:** Validated. Successful AWS console login detected and correlated to compromised identity activity.
+
 ## Investigation
 
 PingOne audit logs and AWS authentication activity were reviewed in Splunk.
