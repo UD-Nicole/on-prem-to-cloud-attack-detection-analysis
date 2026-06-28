@@ -9,6 +9,16 @@ Kali Linux was used to perform a brute force attack against the SSH service on t
 ## Detection 
 Splunk identified repeated failed SSH authentication attempts followed by a successful login from the same source IP, indicating potential brute force activity.
 
+## DR-002 – SSH Brute Force Detection
+
+```spl
+host=webhost sourcetype=linux_secure
+"Failed password"
+| rex field=_raw "Failed password for (?<user>\S+) from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| stats count by host user src_ip
+| where count >= 5
+```
+
 ## Investigation
 The activity was investigated using Splunk search queries across Linux authentication logs. The logs confirmed:
 
