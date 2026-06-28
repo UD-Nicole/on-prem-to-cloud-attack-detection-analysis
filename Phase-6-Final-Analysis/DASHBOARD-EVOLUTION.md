@@ -1,15 +1,13 @@
 # Dashboard Evolution
 
-## Initial Dashboard
-
-Environment before attack execution.
-
-![Initial Dashboard](Initial-Dashboard.png)
+### Baseline Evidence
+- **Pre-Attack Dashboard Overview:**
+![Pre-Attack Dashboard State](baseline-dashboard-pre-attack.png)
 
 ---
 
 ## Final Dashboard
 
-Complete attack chain visible across Linux, Active Directory, PingOne, and AWS.
-
-![Final Dashboard](Final-Dashboard.png)
+### Incident Evidence
+- **Final Active Attack Dashboard View:**
+![Final Dashboard State](after-attack-dashboard.png)
