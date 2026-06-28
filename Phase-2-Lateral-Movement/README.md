@@ -31,24 +31,19 @@ Because the credentials were stored locally in a plaintext file, the credential 
 
 ## Evidence
 
-### Nmshost Pivot Success
-
+- **Nmshost Pivot Success:**
 ![Nmshost Pivot Success](07-nmshost-pivot-success.ng)
 
-### Credential Discovery
-
+- **Credential Discovery:**
 ![Credential Discovery](08-credential-discovery.png)
 
-### Credential Harvesting
-
+- **Credential Harvesting:**
 ![Credential Harvesting](09-credential-harvesting.png)
 
-### Dr006 Investigation
-
+- **DR-006 Investigation:**
 ![Dr006 Investigation](11-dr006-investigation.png)
 
-### Dashboard Update
-
+- **Dashboard Update:**
 ![Dashboard Update](12-dashboard-update.png)
 
 ## Outcome
