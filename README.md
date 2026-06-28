@@ -1,4 +1,4 @@
-# On-Prem to Cloud Attack Chain Detection & Analysis (SOC Simulation)
+# On-Prem to Cloud Attack Chain Detection & Analysis 
 
 ## Overview
 
